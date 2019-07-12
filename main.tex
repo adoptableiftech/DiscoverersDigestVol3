@@ -53,12 +53,32 @@
 %BoldSlantedFont = LinLibertineSlantedZ,
 %SmallCapsFont = LinLibertineCapitals
 %]
-\setmainfont{fbb}[%
-UprightFeatures = {StylisticSet=01},
-BoldFeatures = {StylisticSet=01}
-]
-\setmonofont{LinLibertine_M}
-\setsansfont{LiberationSans}
+\defaultfontfeatures{Path=fonts/, Extension=.ttf}% All fonts
+
+% From https://www.ctan.org/texarchive/fonts/fbb/opentype
+\setmainfont[%
+  Numbers=OldStyle,% Hanging numbers
+  Extension=.otf,
+	UprightFont=*Regular,% Use asterisk-notation as a placeholder for what it says in brackets {} later
+	BoldFont=*Bold,%
+	ItalicFont=*Italic,%
+	BoldItalicFont=*BoldItalic%
+]{fbb-}%[Color=B3EB83]% Toggle color(s) for debugging
+
+% From http://libertine-fonts.org/
+\setmonofont[%
+	UprightFont=*ah,% Use asterisk-notation as a placeholder for what it says in brackets {} later
+	BoldFont=*Bah,%
+	ItalicFont=*Iah,%
+	BoldItalicFont=*BIah%
+]{LinLibertine_R}%[Color=B3EB83]% Toggle color(s) for debugging
+% From https://www.fontsquirrel.com/fonts/liberation-sans
+\setsansfont[%
+	UprightFont=*Regular,%
+	BoldFont=*Bold,%
+	ItalicFont=*Italic,%
+	BoldItalicFont=*BoldItalic,%
+]{LiberationSans-}%[Color=E85748]% Toggle color(s) for debugging
 
 
 \makeatletter
@@ -221,33 +241,33 @@ BoldFeatures = {StylisticSet=01}
 
 %define a 'textblock' for the cover image & place image inside cover
 \begin{textblock*}{70.9mm}(0mm,0mm)
-\includegraphics[width=\paperwidth]{./media/images/nov_cover.png}
+  \includegraphics[width=\paperwidth]{./media/images/nov_cover.png}
 \end{textblock*}
 \thispagestyle{empty}\clearpage %clear header
-  %background image for TOC
-  \backgroundsetup{
-    scale=1,
-    color=black,
-    %opacity=0.35,
-    opacity=0.25,
-    angle=0,
-    contents={\includegraphics[width=1.01\paperwidth, height=1.01\paperheight,keepaspectratio]{./media/images/cover_splash}}
-  }
-  \BgThispage
-  \tableofcontents*
-  \noindent\LARGE{\textbf{Credits}}\medbreak
-  \hrule
+%background image for TOC
+\backgroundsetup{
+  scale=1,
+  color=black,
+  %opacity=0.35,
+  opacity=0.25,
+  angle=0,
+  contents={\includegraphics[width=1.01\paperwidth, height=1.01\paperheight,keepaspectratio]{./media/images/cover_splash}}
+}
+\BgThispage
+\tableofcontents*
+\noindent\LARGE{\textbf{Credits}}\medbreak
+\hrule
 %  \noindent\rule{9cm}{0.4pt}%watch
-  \smallskip
-  \noindent\large{\color{red!50!black}{\textbf{Creator\,/\,Graphics\,/\,Author: D. Cooper
-        Stevenson}}}\\
-  \noindent\small{Cooper Stevenson dedicates himself to enabling fulfilling
-    human experiences through the aesthetic use of technology. He lives with his
-    wife, \emph{Deanna} and his two cats, \emph{Tiberius} and \emph{Augustus}.}\\ \\
-  \noindent\large{\color{red!50!black}{\textbf{Editor: Peter M.J. Gross}}}\\
-  \noindent \small{Peter is an editor and online content
+\smallskip
+\noindent\large{\color{red!50!black}{\textbf{Creator\,/\,Graphics\,/\,Author: D. Cooper
+      Stevenson}}}\\
+\noindent\small{Cooper Stevenson dedicates himself to enabling fulfilling
+  human experiences through the aesthetic use of technology. He lives with his
+  wife, \emph{Deanna} and his two cats, \emph{Tiberius} and \emph{Augustus}.}\\ \\
+\noindent\large{\color{red!50!black}{\textbf{Editor: Peter M.J. Gross}}}\\
+\noindent \small{Peter is an editor and online content
   specialist who has been entertained by interactive fiction since "\emph{Nord and
-  Bert Couldn't Make Head or Tail of It}." He had to resort to a walkthrough in
+    Bert Couldn't Make Head or Tail of It}." He had to resort to a walkthrough in
   order to complete \emph{Trinity}, and he could never figure out \emph{A Mind Forever
     Voyaging}.}
 
@@ -256,34 +276,34 @@ BoldFeatures = {StylisticSet=01}
 % First Article
 \chapter*{}
 \begin{textblock*}{70.9mm}(0mm,0mm)
-\includegraphics[width=\paperwidth]{./media/images/editorial_splash}
+  \includegraphics[width=\paperwidth]{./media/images/editorial_splash}
 \end{textblock*}
 \clearpage
 \chapter{Editorial: Pushing Limits\\ \small{How IF Makes A Difference}}
 \input{./editorial.tex}
 
 \chapter*{}
-  \begin{textblock*}{70.9mm}(0mm,0mm)
-    \includegraphics[width=\paperwidth]{./media/images/puzzle_splash}
-  \end{textblock*}
-  \chapter{The Best Puzzles\\ \small{The Thrill Of Achievement}}
+\begin{textblock*}{70.9mm}(0mm,0mm)
+  \includegraphics[width=\paperwidth]{./media/images/puzzle_splash}
+\end{textblock*}
+\chapter{The Best Puzzles\\ \small{The Thrill Of Achievement}}
 \input{./puzzle.tex}
 
 \chapter*{}
 \begin{textblock*}{70.9mm}(0mm,0mm)
-\includegraphics[width=\paperwidth]{./media/images/gps_splash}
+  \includegraphics[width=\paperwidth]{./media/images/gps_splash}
 \end{textblock*}
 \clearpage
 \chapter{IF \& GPS\\ \small{Interactive Fiction in the Real World}}
 \input{./gps.tex}
 
- \chapter*{}
-  \begin{textblock*}{70.9mm}(0mm,0mm)
-    \includegraphics[width=\paperwidth]{./media/images/murder_ad}
-  \end{textblock*}
-  \chapter{Murder In The Mail\\ \small{Remember When Checking the Mail Was Fun?}}
- \label{sec:murder}
- \input{./murder.tex}
+\chapter*{}
+\begin{textblock*}{70.9mm}(0mm,0mm)
+  \includegraphics[width=\paperwidth]{./media/images/murder_ad}
+\end{textblock*}
+\chapter{Murder In The Mail\\ \small{Remember When Checking the Mail Was Fun?}}
+\label{sec:murder}
+\input{./murder.tex}
 
 % \chapter*{}
 % \begin{textblock*}{70.9mm}(0mm,0mm)
