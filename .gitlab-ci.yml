@@ -1,0 +1,23 @@
+# Image from dockerhub per default:
+image: alexpovel/javalatex
+
+# Define some stages so to get rid of 'Test' as default:
+stages:
+    - build
+    
+compile_pdf:
+    script:
+        # No *.tex-file given as argument to latexmk: run on all *.tex-files found in root.
+        # Configure latexmk tool using '.latexmkrc' in project root.
+        - latexmk main
+    stage:
+        build
+    artifacts:
+        # artifacts.zip is renamed to current tag/branch:
+        name: "$CI_COMMIT_REF_NAME"
+        paths:
+        # Return all found *.pdf-files using wildcard:
+            - "*.pdf"
+    # Run job 'only' if it fulfills certain criteria:
+    # only:
+        # - tags
